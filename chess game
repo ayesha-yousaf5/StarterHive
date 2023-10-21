@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chess Game</title>
+    <style>
+        .board {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .square {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .piece {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="board"></div>
+    <script src="chess.js"></script>
+</body>
+</html>
+create the JavaScript file (chess.js) for the game logic.
+const board = document.querySelector('.board');
+
+const createBoard = () => {
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            const square = document.createElement('div');
+            square.classList.add('square');
+
+            if ((i + j) % 2 === 0) {
+                square.classList.add('black');
+            }
+
+            // Place pieces on the board
+            if (i === 1) {
+                const piece = document.createElement('div');
+                piece.classList.add('piece', 'pawn', 'white');
+                square.appendChild(piece);
+            }
+
+            if (i === 6) {
+                const piece = document.createElement('div');
+                piece.classList.add('piece', 'pawn', 'black');
+                square.appendChild(piece);
+            }
+
+            board.appendChild(square);
+        }
+    }
+};
+
+createBoard();
